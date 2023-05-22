@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const ArticleIte = ({article}) => {
   return (
-    <Link legacyBehavior href='/[id]' as={`/${article.id}`} >
+    <Link legacyBehavior href='article/[id]' as={`article/${article.id}`} >
       <a className={articleStyles.card}>
         <h3>{article.title} &arr;</h3>
         <p>{article.body}</p>

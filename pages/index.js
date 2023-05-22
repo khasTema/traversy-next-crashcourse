@@ -1,27 +1,35 @@
-import Head from 'next/head'
+import { server  } from '../config'
 import ArticleList from '@/components/ArticleList'
 
 
-export default function Home({acrticles}) {
+export default function Home({articles}) {
   return (
         <div>
-            <Head>
-                <title>Web DEv NEXT</title>
-                <meta name="keywords" content="some dev etc" />
-            </Head>
-            
-            <ArticleList acrticles={acrticles}/>
+            <ArticleList articles={articles}/>
         </div>
   )
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
-  const acrticles = await res.json()
+  const res = await fetch(`${server}/api/articles`)
+  const articles = await res.json()
 
   return {
-     props: {
-      acrticles
-     }
+    props: {
+      articles,
+    },
   }
 }
+
+// export const getStaticProps = async () => {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=6`)
+//   const acrticles = await res.json()
+
+//   return {
+//      props: {
+//       acrticles
+//      }
+//   }
+// }
+
+
